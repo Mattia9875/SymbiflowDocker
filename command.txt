@@ -1,0 +1,1 @@
+docker run --rm -it --memory="6g" --privileged -v /dev/bus/usb:/dev/bus/usb  symbiflow:latest
