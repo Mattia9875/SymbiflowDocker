@@ -6,9 +6,9 @@ WORKDIR /symb
 ENV INSTALL_DIR=/symb
 ENV BOARD_MODEL=${BOARD_MODEL}
 ENV FPGA_FAM=xc7
-#snstalling the necessary tools
+#installing the necessary tools
 RUN apt update && \
-    apt install -y git wget picocom xz-utils xc3sprog
+    apt install -y git wget xz-utils xc3sprog
 #cloning into symbiflow-examples
 RUN git clone https://github.com/SymbiFlow/symbiflow-examples && \
     cd symbiflow-examples
