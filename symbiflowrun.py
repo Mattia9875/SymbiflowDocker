@@ -6,12 +6,12 @@ logging.basicConfig()
 
 # get the args from the env variables
 args = {
-    'part': os.getenv('PART_NAME'),
+    'part': os.getenv('BOARD_MODEL'),
     'topfilename': os.getenv('TOP_FILE'),
     'prjdir': os.getenv('PRJ_DIR')
 }
 
-# cd into the dir and clean th project
+# cd into the dir and clean the project
 os.chdir(args['prjdir'])
 shutil.rmtree(args['prjdir'] + "/build", ignore_errors=True)
 
