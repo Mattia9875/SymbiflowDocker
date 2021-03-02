@@ -30,8 +30,6 @@ RUN git clone --single-branch --branch symbiflow-support https://github.com/PyFP
 RUN mkdir -p $INSTALL_DIR/${FPGA_FAM}/install && \
     wget -qO- https://storage.googleapis.com/symbiflow-arch-defs/artifacts/prod/foss-fpga-tools/symbiflow-arch-defs/continuous/install/112/20201208-080919/symbiflow-arch-defs-install-7c1267b7.tar.xz | tar -xJC $INSTALL_DIR/${FPGA_FAM}/install       && \
     wget -qO- https://storage.googleapis.com/symbiflow-arch-defs/artifacts/prod/foss-fpga-tools/symbiflow-arch-defs/continuous/install/112/20201208-080919/symbiflow-arch-defs-${BOARD_MODEL}_test-7c1267b7.tar.xz | tar -xJC $INSTALL_DIR/${FPGA_FAM}/install
-#activating the enviroment
-#RUN echo "source activate ${FPGA_FAM}" > ~/.bashrc
 #linking the toolchain commands
 ENV PATH="$PATH:/symb/${FPGA_FAM}/install/bin"
 #Copy runner script
