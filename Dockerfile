@@ -10,6 +10,7 @@ ENV BOARD_MODEL=${BOARD_MODEL}
 ENV FPGA_FAM=xc7
 
 #additional variables
+ENV MODE=null
 ENV TOP_FILE=null
 ENV PRJ_DIR=null
 

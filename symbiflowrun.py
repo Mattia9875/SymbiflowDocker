@@ -8,12 +8,12 @@ logging.basicConfig()
 args = {
     'part': os.getenv('BOARD_MODEL'),
     'topfilename': os.getenv('TOP_FILE'),
-    'prjdir': os.getenv('PRJ_DIR')
+    'prjdir': os.getenv('PRJ_DIR'),
+    'mode': os.getenv('MODE')
 }
 
-# cd into the dir and clean the project
+# cd into the dir
 os.chdir(args['prjdir'])
-shutil.rmtree(args['prjdir'] + "/build", ignore_errors=True)
 
 # configure the project
 prj = Project('symbiflow')
@@ -37,13 +37,25 @@ for file_name in dir_list:
     prj.add_files(file_name)
 
 # set top level entity
-#prj.set_top('top')
 prj.set_top(args['topfilename'][:-2])
 
-# generate the project
-prj.generate()
+if (args['mode'] == 0):
+    # generate the project
+    shutil.rmtree(args['prjdir'] + "/build", ignore_errors=True)
+    prj.generate()
+    os.system("exit")
+else (args['mode'] == 1):
+    # cd into build and upload the design
+    os.chdir(args['prjdir'] + "/build")
+    os.system("xc3sprog -c nexys4 symbiflow.bit")
+    os.system("exit")
+else:
+    # generate the project
+    shutil.rmtree(args['prjdir'] + "/build", ignore_errors=True)
+    prj.generate()
 
-# cd into build and upload the design
-os.chdir(args['prjdir'] + "/build")
-os.system("xc3sprog -c nexys4 symbiflow.bit")
-os.system("exit")
+    # cd into build and upload the design
+    os.chdir(args['prjdir'] + "/build")
+    os.system("xc3sprog -c nexys4 symbiflow.bit")
+    os.system("exit")
+    
