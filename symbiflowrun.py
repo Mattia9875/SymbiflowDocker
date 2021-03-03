@@ -14,7 +14,7 @@ args = {
 
 # cd into the dir
 os.chdir(args['prjdir'])
-if (args['mode'] /= 1):
+if (args['mode'] != 1):
     shutil.rmtree(args['prjdir'] + "/build", ignore_errors=True)
 
 
