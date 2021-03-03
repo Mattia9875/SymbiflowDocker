@@ -14,6 +14,9 @@ args = {
 
 # cd into the dir
 os.chdir(args['prjdir'])
+if (args['mode'] /= 1):
+    shutil.rmtree(args['prjdir'] + "/build", ignore_errors=True)
+
 
 # configure the project
 prj = Project('symbiflow')
@@ -41,7 +44,6 @@ prj.set_top(args['topfilename'][:-2])
 
 if (args['mode'] == 0):
     # generate the project
-    shutil.rmtree(args['prjdir'] + "/build", ignore_errors=True)
     prj.generate()
     os.system("exit")
 elif (args['mode'] == 1):
@@ -51,7 +53,6 @@ elif (args['mode'] == 1):
     os.system("exit")
 else:
     # generate the project
-    shutil.rmtree(args['prjdir'] + "/build", ignore_errors=True)
     prj.generate()
 
     # cd into build and upload the design
