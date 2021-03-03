@@ -54,7 +54,6 @@ elif (args['mode'] == 1):
 else:
     # generate the project
     prj.generate()
-
     # cd into build and upload the design
     os.chdir(args['prjdir'] + "/build")
     os.system("xc3sprog -c nexys4 symbiflow.bit")
