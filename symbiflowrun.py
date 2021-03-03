@@ -9,7 +9,7 @@ args = {
     'part': os.getenv('BOARD_MODEL'),
     'topfilename': os.getenv('TOP_FILE'),
     'prjdir': os.getenv('PRJ_DIR'),
-    'mode': os.getenv('MODE')
+    'mode': int(os.getenv('MODE'))
 }
 
 # cd into the dir
@@ -44,7 +44,7 @@ if (args['mode'] == 0):
     shutil.rmtree(args['prjdir'] + "/build", ignore_errors=True)
     prj.generate()
     os.system("exit")
-else (args['mode'] == 1):
+elif (args['mode'] == 1):
     # cd into build and upload the design
     os.chdir(args['prjdir'] + "/build")
     os.system("xc3sprog -c nexys4 symbiflow.bit")
@@ -58,4 +58,3 @@ else:
     os.chdir(args['prjdir'] + "/build")
     os.system("xc3sprog -c nexys4 symbiflow.bit")
     os.system("exit")
-    
