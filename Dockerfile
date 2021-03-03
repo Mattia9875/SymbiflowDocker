@@ -9,7 +9,7 @@ ENV INSTALL_DIR=/symb
 ENV BOARD_MODEL=${BOARD_MODEL}
 ENV FPGA_FAM=xc7
 
-#Additional variables
+#additional variables
 ENV TOP_FILE=null
 ENV PRJ_DIR=null
 
@@ -24,7 +24,7 @@ RUN git clone https://github.com/SymbiFlow/symbiflow-examples && \
 #creating the conda enviroment
 RUN conda env create -f ${INSTALL_DIR}/symbiflow-examples/${FPGA_FAM}/environment.yml
 
-#setting the shell inside the enviroment
+#setting the shell inside the enviroment (xc7 -> FAMILY)
 SHELL ["conda", "run", "-n", "xc7", "/bin/bash", "-c"]
 
 #installing pyFPGA    

@@ -37,7 +37,8 @@ for file_name in dir_list:
     prj.add_files(file_name)
 
 # set top level entity
-prj.set_top('top')
+#prj.set_top('top')
+prj.set_top(args['topfilename'][:-2])
 
 # generate the project
 prj.generate()
